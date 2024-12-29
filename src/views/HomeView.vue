@@ -38,6 +38,7 @@
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
 import { getUserList, createUser, deleteUser } from "@/api";
+import axios from "axios";
 export default {
   name: "HomeView",
   components: {
@@ -81,7 +82,7 @@ export default {
     async fetchUserList() {
       try {
         const uList = await getUserList(); // 调用 API 获取数据
-        this.userList = this.userList.concat(uList);
+        this.userList = uList;
       } catch (error) {
         this.errorMessage = "Failed to load user list. Please try again later."; // 错误提示
       }
